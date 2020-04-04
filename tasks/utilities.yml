@@ -1,0 +1,33 @@
+---
+- name: install utilities
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apt-transport-https
+    - software-properties-common
+    - curl
+    - wget
+    - git
+    - rdesktop
+    - tree
+    - gnome-tweaks
+    - net-tools
+
+- name: install dependencies vscode
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+      - ca-certificates
+      - gconf2
+      - libasound2
+      - libgtk2.0-0
+      - libxss1
+
+- name: install dependencies docker
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+      - gnupg2

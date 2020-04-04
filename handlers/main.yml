@@ -1,0 +1,5 @@
+---
+- name: docker restart.
+  systemd: 
+    name: docker
+    state: "{{ docker_restart_handler_state }}"

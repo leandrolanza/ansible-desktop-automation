@@ -1,0 +1,15 @@
+- name: Chrome add apt key.
+  shell: wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+
+- name: Chrome install repo.
+  become: yes
+  apt_repository:
+    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+    filename: google-chrome
+    state: present
+    update_cache: yes
+
+- name: chrome install.
+  apt:
+    name: google-chrome-stable
+    state: present

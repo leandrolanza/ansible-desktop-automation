@@ -1,0 +1,7 @@
+---
+postman_filename: 'Postman-linux-x64-latest.tar.gz'
+
+visual_studio_code_config_dirname: "{{ (visual_studio_code_build == 'insiders') | ternary('Code - Insiders', 'Code') }}"
+visual_studio_code_config_path: "{{ (ansible_distribution == 'MacOSX') | ternary('Library/Application Support', '.config') }}/{{ visual_studio_code_config_dirname }}"
+visual_studio_code_package: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
+visual_studio_code_exe: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
