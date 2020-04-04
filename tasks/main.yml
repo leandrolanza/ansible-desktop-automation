@@ -1,0 +1,10 @@
+---
+- include: repo-debian.yml
+- include: utilities.yml
+- include: postman.yml
+- include: vscode.yml
+- include: spotify.yml
+- include: docker.yml
+- include: teamviewer.yml
+- include: sublime.yml
+- include: chrome.yml

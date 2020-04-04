@@ -1,0 +1,82 @@
+---
+#- name: install extensions
+#  become: yes
+#  become_user: '{{ item.0.username }}'
+#  visual_studio_code_install_extension:
+#    executable: '{{ visual_studio_code_exe }}'
+#    name: '{{ item.1 }}'
+#  with_subelements:
+#    - '{{ users }}'
+#    - visual_studio_code_extensions
+#    - skip_missing: yes
+#  loop_control:
+#    label: '{{ item.0.username }}: {{ item.1 }}'
+
+#- name: create config directories for users
+#  become: yes
+#  become_user: '{{ user.username }}'
+#  file:
+#    path: '~{{ user.username }}/{{ visual_studio_code_config_path }}'
+#    state: directory
+#    mode: 'u=rwx,go=rx'
+#  with_items: '{{ users }}'
+#  loop_control:
+#    loop_var: user
+#    label: '{{ user.username }}'
+#  when: "user.visual_studio_code_settings is defined and user.visual_studio_code_settings not in ({}, '', None, omit)"
+#
+#- name: create settings directory
+#  become: yes
+#  become_user: '{{ user.username }}'
+#  file:
+#    path: '~{{ user.username }}/{{ visual_studio_code_config_path }}/User'
+#    state: directory
+#    mode: 'u=rwx,go='
+#  with_items: '{{ users }}'
+#  loop_control:
+#    loop_var: user
+#    label: '{{ user.username }}'
+#  when: "user.visual_studio_code_settings is defined and user.visual_studio_code_settings not in ({}, '', None, omit)"
+#
+#- name: write settings
+#  become: yes
+#  become_user: '{{ user.username }}'
+#  template:
+#    src: settings.json.j2
+#    dest: '~{{ user.username }}/{{ visual_studio_code_config_path }}/User/settings.json'
+#    force: '{{ user.visual_studio_code_settings_overwrite | default(False) | bool }}'
+#    mode: 'u=rw,go='
+#  with_items: '{{ users }}'
+#  loop_control:
+#    loop_var: user
+#    label: '{{ user.username }}'
+#  when: "user.visual_studio_code_settings is defined and user.visual_studio_code_settings not in ({}, '', None, omit)"
+
+- name: assert supported distribution
+  assert:
+    that:
+      - "ansible_pkg_mgr in ('apt')"
+
+- name: assert supported build
+  assert:
+    that:
+      - "visual_studio_code_build in ('stable', 'insiders')"
+
+- name: install key (apt)
+  become: yes
+  apt_key:
+    url: '{{ visual_studio_code_mirror }}/keys/microsoft.asc'
+    state: present
+
+- name: install VS Code repo (apt)
+  become: yes
+  apt_repository:
+    repo: 'deb [arch=amd64] {{ visual_studio_code_mirror }}/repos/vscode stable main'
+    filename: vscode
+    state: present
+
+- name: install VS Code (apt)
+  become: yes
+  apt:
+    name: "{{ visual_studio_code_package }}{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"
+    state: present
