@@ -13,6 +13,12 @@
     - tree
     - gnome-tweaks
     - net-tools
+    - vim
+    - screen
+    - nmap
+    - flameshot
+    - whois
+    - unzip
 
 - name: install dependencies vscode
   package:

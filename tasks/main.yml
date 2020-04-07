@@ -8,3 +8,5 @@
 - include: teamviewer.yml
 - include: sublime.yml
 - include: chrome.yml
+- include: awscli.yml
+- include: tilix.yml
