@@ -1,0 +1,12 @@
+- name: install tilix repo
+  become: yes
+  apt_repository:
+    repo: ppa:webupd8team/terminix
+    filename: tilix
+    state: present
+    update_cache: yes
+
+- name: tilix install debian
+  apt:
+    name: tilix
+    state: present

@@ -31,3 +31,13 @@ docker_yum_repo_enable_edge: 0
 docker_yum_repo_enable_test: 0
 docker_yum_gpg_key: https://download.docker.com/linux/centos/gpg
 docker_users: [user]
+
+# AWS cli
+aws_cli_download_dir: /tmp/awscli
+aws_cli_url_download: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+aws_cli_user: user
+aws_cli_home: /home/user
+aws_output_format: json
+aws_region: us-east-1
+aws_access_key_id: YOUR_ACCESS_KEY_ID
+aws_secret_access_key: YOUR_SECRET_ACCESS_KEY
