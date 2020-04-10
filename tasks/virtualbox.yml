@@ -1,0 +1,33 @@
+- name: Configure the Oracle APT key
+  apt_key:
+    url: "{{ item }}"
+    state: present
+  with_items:
+    - "https://www.virtualbox.org/download/oracle_vbox.asc"
+    - "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
+
+- name: Virtualbox install repo.
+  become: yes
+  apt_repository:
+    repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bionic contrib
+    filename: virtualbox.list
+    state: present
+    update_cache: yes
+
+- name: Virtualbox install.
+  apt:
+    name: virtualbox-6.1
+    state: present
+
+- name: Copy extension pack
+  copy:
+    src: files/Oracle_VM_VirtualBox_Extension_Pack-6.1.4.vbox-extpack
+    dest: /tmp
+    owner: "{{ aws_cli_user }}"
+    group: "{{ aws_cli_user }}"
+    mode: 0600
+
+#- name: VirtualBox Extension Pack
+#  shell: vboxmanage extpack install /tmp/Oracle_VM_VirtualBox_Extension_Pack-6.1.4.vbox-extpack --replace --accept-license=715c7246dc0f779ceab39446812362b2f9bf64a55ed5d3a905f053cfab36da9e
+#  #when: 'extpack_list.stdout == "Extension Packs: 0"'
+#  #ignore_errors: yes
