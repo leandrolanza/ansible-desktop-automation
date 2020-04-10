@@ -10,3 +10,4 @@
 - include: chrome.yml
 - include: awscli.yml
 - include: tilix.yml
+- include: virtualbox.yml
