@@ -7,3 +7,5 @@ visual_studio_code_package: "{{ (visual_studio_code_build == 'insiders') | terna
 visual_studio_code_exe: "{{ (visual_studio_code_build == 'insiders') | ternary('code-insiders', 'code') }}"
 
 aws_cli_filename: awscliv2.zip
+
+terraform_filename: 'terraform_0.11.14_linux_amd64.zip'

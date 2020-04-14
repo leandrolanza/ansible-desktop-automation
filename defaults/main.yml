@@ -41,3 +41,12 @@ aws_output_format: json
 aws_region: us-east-1
 aws_access_key_id: YOUR_ACCESS_KEY_ID
 aws_secret_access_key: YOUR_SECRET_ACCESS_KEY
+
+# Terraform
+terraform_url_download: https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip
+terraform_install_dir: /usr/local/bin/
+terraform_download_dir: /tmp/terraform
+
+# Skype
+skype_url_download: https://go.skype.com/skypeforlinux-64.deb
+skype_download_dir: /tmp/skype
