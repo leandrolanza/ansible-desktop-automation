@@ -11,3 +11,4 @@
 - include: awscli.yml
 - include: tilix.yml
 - include: virtualbox.yml
+- include: terraform.yml
