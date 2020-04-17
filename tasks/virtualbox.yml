@@ -26,3 +26,11 @@
     owner: "{{ aws_cli_user }}"
     group: "{{ aws_cli_user }}"
     mode: 0600
+
+- name: Ensure virtualbox users are added to the vbox group.
+  user:
+    name: "{{ item }}"
+    groups: vboxusers
+    append: true
+  with_items: "{{ usuario }}"
+  when: usuario | length > 0

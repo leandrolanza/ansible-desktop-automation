@@ -31,23 +31,23 @@
     path: "{{ aws_cli_home }}/.aws"
     state: directory
     mode: '0755'
-  when: aws_cli_user | length > 0
+  when: usuario | length > 0
 
 - name: Change file ownership, group and permissions
   file:
     path: "{{ aws_cli_home }}/.aws"
-    owner: "{{ aws_cli_user }}"
-    group: "{{ aws_cli_user }}"
+    owner: "{{ usuario }}"
+    group: "{{ usuario }}"
     mode: '0755'
-  when: aws_cli_user | length > 0
+  when: usuario | length > 0
 
 - name: Copy AWS CLI config
   become: yes
   template:
     src: aws_cli_config.j2
     dest: "{{ aws_cli_home }}/.aws/config"
-    owner: "{{ aws_cli_user }}"
-    group: "{{ aws_cli_user }}"
+    owner: "{{ usuario }}"
+    group: "{{ usuario }}"
     mode: u=rw,go=r
 
 - name: Copy AWS CLI credentials
@@ -55,6 +55,6 @@
   template:
     src: aws_cli_credentials.j2
     dest: "{{ aws_cli_home }}/.aws/credentials"
-    owner: "{{ aws_cli_user }}"
-    group: "{{ aws_cli_user }}"
+    owner: "{{ usuario }}"
+    group: "{{ usuario }}"
     mode: 0600

@@ -1,4 +1,7 @@
 ---
+# Global
+usuario: user
+
 # Postman
 postman_url_download: https://dl.pstmn.io/download/latest/linux64
 postman_install_dir: /opt/Postman
