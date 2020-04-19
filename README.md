@@ -14,6 +14,9 @@ list tools
 - unzip
 - tilix
 - awscli_v2
+- terraform
+- virtualbox
+- skype
 
 ### in development
 
