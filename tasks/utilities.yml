@@ -1,15 +1,15 @@
 ---
-- name: Update apt-get repo and cache
+- name: Utilities - Update apt-get repo and cache.
   apt:
     update_cache: yes
     cache_valid_time: 3600
 
-- name: Upgrade apt-get all packages
+- name: Utilities - Upgrade apt-get all packages.
   apt:
     name: "*"
     state: latest
 
-- name: install utilities
+- name: Utilities - Install.
   package:
     name: "{{ item }}"
     state: present
@@ -30,7 +30,7 @@
     - whois
     - unzip
 
-- name: install dependencies vscode
+- name: Utilities - Install dependencies vscode.
   package:
     name: "{{ item }}"
     state: present
@@ -41,7 +41,7 @@
       - libgtk2.0-0
       - libxss1
 
-- name: install dependencies docker
+- name: Utilities - Install dependencies docker.
   package:
     name: "{{ item }}"
     state: present

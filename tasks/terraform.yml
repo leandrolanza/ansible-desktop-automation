@@ -1,17 +1,17 @@
 ---
-- name: create download directory
+- name: Terraform - Create download directory.
   file:
     state: directory
     mode: u=rwx,go=rx
     dest: "{{ terraform_download_dir }}"
 
-- name: download Terraform
+- name: Terraform - Download.
   get_url:
     url: "{{ terraform_url_download }}"
     dest: "{{ terraform_download_dir }}/{{ terraform_filename }}"
     mode: u=rw,go=r
 
-- name: create Terraform installation directory
+- name: Terraform - Create installation directory.
   become: yes
   file:
     state: directory
@@ -20,14 +20,14 @@
     mode: u=rwx,go=rx
     dest: "{{ terraform_install_dir }}"
 
-- name: Unzip Terraform
+- name: Terraform - Unzip.
   become: yes
   unarchive:
     src: "{{ terraform_download_dir }}/{{ terraform_filename }}"
     remote_src: yes
     dest: "{{ terraform_download_dir }}"
     
-- name: install Terraform
+- name: Terraform - Install.
   become: yes
   copy:
     remote_src: yes

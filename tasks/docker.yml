@@ -1,12 +1,12 @@
 ---
-- name: Docker Ensure old versions of Docker are not installed.
+- name: Docker - Ensure old versions of Docker are not installed.
   package:
     name:
       - docker
       - docker-engine
     state: absent
 
-- name: Docker Add apt key.
+- name: Docker - Add apt key.
   apt_key:
     url: "{{ docker_apt_gpg_key }}"
     id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
@@ -14,20 +14,20 @@
   register: add_repository_key
   ignore_errors: "{{ docker_apt_ignore_key_error }}"
 
-- name: Docker Ensure curl is present (on older systems without SNI).
+- name: Docker - Ensure curl is present.
   package: 
     name: curl
     state: present
   when: add_repository_key is failed
 
-- name: Docker Add apt key (alternative for older systems without SNI).
+- name: Docker - Add apt key.
   shell: >
     curl -sSL {{ docker_apt_gpg_key }} | sudo apt-key add -
   args:
     warn: false
   when: add_repository_key is failed
 
-- name: Docker Add repository.
+- name: Docker - Add repository.
   become: yes
   apt_repository:
     repo: "{{ docker_apt_repository }}"
@@ -35,27 +35,25 @@
     state: present
     update_cache: yes
 
-- name: Docker Install.
+- name: Docker - Install.
   package:
     name: "{{ docker_package }}"
     state: "{{ docker_package_state }}"
   notify: restart docker
 
-- name: Docker Ensure is started and enabled at boot.
+- name: Docker - Ensure is started and enabled at boot.
   service:
     name: docker
     state: "{{ docker_service_state }}"
     enabled: "{{ docker_service_enabled }}"
 
-- name: Ensure handlers are notified now to avoid firewall conflicts.
+- name: Docker - Ensure handlers are notified now to avoid firewall conflicts.
   meta: flush_handlers
 
 - include_tasks: docker-compose.yml
   when: docker_install_compose | bool
 
-
-
-- name: Ensure docker users are added to the docker group.
+- name: Docker - Ensure docker users are added to the docker group.
   user:
     name: "{{ item }}"
     groups: docker

@@ -1,12 +1,13 @@
-- name: Configure the Oracle APT key
+---
+- name: Virtualbox - Configure the Oracle APT key.
   apt_key:
     url: "{{ item }}"
     state: present
   with_items:
-    - "https://www.virtualbox.org/download/oracle_vbox.asc"
-    - "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
+    - https://www.virtualbox.org/download/oracle_vbox.asc
+    - https://www.virtualbox.org/download/oracle_vbox_2016.asc
 
-- name: Virtualbox install repo.
+- name: Virtualbox - Install repo.
   become: yes
   apt_repository:
     repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bionic contrib
@@ -14,12 +15,12 @@
     state: present
     update_cache: yes
 
-- name: Virtualbox install.
+- name: Virtualbox - Install.
   apt:
     name: virtualbox-6.1
     state: present
 
-- name: Copy extension pack
+- name: Virtualbox - Copy extension pack.
   copy:
     src: files/Oracle_VM_VirtualBox_Extension_Pack-6.1.4.vbox-extpack
     dest: /tmp
@@ -27,7 +28,7 @@
     group: "{{ aws_cli_user }}"
     mode: 0600
 
-- name: Ensure virtualbox users are added to the vbox group.
+- name: Virtualbox - Ensure virtualbox users are added to the vbox group.
   user:
     name: "{{ item }}"
     groups: vboxusers

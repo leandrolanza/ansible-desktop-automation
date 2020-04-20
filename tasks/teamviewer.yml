@@ -1,9 +1,10 @@
-- name:  Apt signing key teamviewer
+---
+- name:  Teamviewer - Apt signing key.
   apt_key:
     url: https://download.teamviewer.com/download/linux/signature/TeamViewer2017.asc
     state: present
 
-- name: install teamviewer repo
+- name: Teamviewer - Install repo.
   become: yes
   apt_repository:
     repo: deb http://linux.teamviewer.com/deb stable main
@@ -11,7 +12,7 @@
     state: present
     update_cache: yes
 
-- name: teamviewer install debian
+- name: Teamviewer - Install.
   apt:
     name: teamviewer
     state: present
