@@ -1,18 +1,18 @@
 ---
-- name: install key (apt)
+- name: VScode - Install key.
   become: yes
   apt_key:
-    url: '{{ visual_studio_code_mirror }}/keys/microsoft.asc'
+    url: "{{ visual_studio_code_mirror }}/keys/microsoft.asc"
     state: present
 
-- name: install VS Code repo (apt)
+- name: VScode - Install repo.
   become: yes
   apt_repository:
     repo: "deb [arch=amd64] {{ visual_studio_code_mirror }}/repos/vscode stable main"
     filename: vscode
     state: present
 
-- name: install VS Code (apt)
+- name: VScode - Install.
   become: yes
   apt:
     name: "code{{ (visual_studio_code_version | length > 0) | ternary('=' + visual_studio_code_version, '') }}"

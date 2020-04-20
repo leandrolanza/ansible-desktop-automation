@@ -1,11 +1,11 @@
 ---
-- name: create download directory
+- name: Postman - Create download directory.
   file:
     state: directory
     mode: u=rwx,go=rx
     dest: "{{ postman_download_dir }}"
 
-- name: download Postman
+- name: Postman - Download.
   get_url:
     url: "{{ postman_url_download }}"
     dest: "{{ postman_download_dir }}/{{ postman_filename }}"
@@ -13,7 +13,7 @@
     validate_certs: yes
     mode: u=rw,go=r
 
-- name: create Postman installation directory
+- name: Postman - Create installation directory.
   become: yes
   file:
     state: directory
@@ -22,7 +22,7 @@
     mode: u=rwx,go=rx
     dest: "{{ postman_install_dir }}"
 
-- name: install Postman
+- name: Postman - Install.
   become: yes
   unarchive:
     src: "{{ postman_download_dir }}/{{ postman_filename }}"
@@ -34,14 +34,14 @@
     group: root
     creates: "{{ postman_install_dir }}/Postman"
 
-- name: install Postman link
+- name: Postman - Install link.
   become: yes
   file:
     state: link
     src: "{{ postman_install_dir }}/Postman"
     dest: /usr/local/bin/Postman
 
-- name: install Postman desktop file
+- name: Postman - Install desktop file.
   become: yes
   template:
     src: Postman.desktop.j2

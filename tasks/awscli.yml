@@ -1,17 +1,17 @@
 ---
-- name: create download directory
+- name: AWSCli - Create download directory.
   file:
     state: directory
     mode: u=rwx,go=rx
     dest: "{{ aws_cli_download_dir }}"
 
-- name: download awscli
+- name: AWSCli - Download.
   get_url:
     url: "{{ aws_cli_url_download }}"
     dest: "{{ aws_cli_download_dir }}/{{ aws_cli_filename }}"
     mode: u=rw,go=r
 
-- name: unzip awscli
+- name: AWSCli - Unzip.
   become: yes
   unarchive:
     src: "{{ aws_cli_download_dir }}/{{ aws_cli_filename }}"
@@ -20,28 +20,28 @@
     owner: root
     group: root
 
-- name: install awscli
+- name: AWSCli - Install.
   shell:
     cmd: sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
     chdir: "{{ aws_cli_download_dir }}"
 
 
-- name: Create a directory if it does not exist
+- name: AWSCli - Create a directory if it does not exist.
   file:
     path: "{{ aws_cli_home }}/.aws"
     state: directory
     mode: '0755'
   when: usuario | length > 0
 
-- name: Change file ownership, group and permissions
+- name: AWSCli - Change file ownership, group and permissions.
   file:
     path: "{{ aws_cli_home }}/.aws"
     owner: "{{ usuario }}"
     group: "{{ usuario }}"
-    mode: '0755'
+    mode: 0755
   when: usuario | length > 0
 
-- name: Copy AWS CLI config
+- name: AWSCli - Copy AWS CLI config.
   become: yes
   template:
     src: aws_cli_config.j2
@@ -50,7 +50,7 @@
     group: "{{ usuario }}"
     mode: u=rw,go=r
 
-- name: Copy AWS CLI credentials
+- name: AWSCli - Copy AWS CLI credentials.
   become: yes
   template:
     src: aws_cli_credentials.j2
