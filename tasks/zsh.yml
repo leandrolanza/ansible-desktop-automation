@@ -3,3 +3,41 @@
   apt:
     name: zsh
     state: present
+
+- name: Oh my zsh - Cloning repo.
+  git:
+    repo: "{{ oh_my_zsh_url_download }}"
+    dest: "/home/{{ usuario }}/.oh-my-zsh"
+    update: yes
+    force: yes
+    
+- name: Oh my zsh - Set permissions.
+  file:
+    path: "/home/{{ usuario }}/.oh-my-zsh"
+    state: directory
+    recurse: yes
+    owner: "{{ usuario }}"
+    group: "{{ usuario }}"
+
+- name: Oh my zsh - Creating new ~/.zshrc.
+  template:
+    src: zshrc.j2
+    dest: "/home/{{ usuario }}/.zshrc"
+
+- name: Oh my zsh - Set permissions ~/.zshrc.
+  file:
+    path: "/home/{{ usuario }}/.zshrc"
+    owner: "{{ usuario }}"
+    group: "{{ usuario }}"
+    mode: 0644
+
+- name: Oh my zsh - Ensure user is using zsh shell.
+  user:
+    name: "{{ usuario }}"
+    shell: /usr/bin/zsh
+
+- name: Oh my zsh - Add plugins.
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+  with_items: "{{ oh_my_zsh_custom_plugins }}"

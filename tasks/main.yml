@@ -12,3 +12,4 @@
 - include: terraform.yml
 - include: tilix.yml
 - include: virtualbox.yml
+- include: zsh.yml
