@@ -56,7 +56,6 @@ skype_download_dir: /tmp/skype
 oh_my_zsh_url_download: https://github.com/robbyrussell/oh-my-zsh
 oh_my_zsh_theme: robbyrussell
 oh_my_zsh_export: "/home/{{ usuario }}/.oh-my-zsh"
-oh_my_zsh_variable: export PATH=~/.local/bin:$PATH
 oh_my_zsh_plugins: git zsh-autosuggestions zsh-syntax-highlighting
 oh_my_zsh_custom_dir_plugins: /home/{{ usuario }}/.oh-my-zsh/custom/plugins/
 oh_my_zsh_custom_plugins:
