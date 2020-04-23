@@ -51,3 +51,28 @@ terraform_download_dir: /tmp/terraform
 # Skype
 skype_url_download: https://go.skype.com/skypeforlinux-64.deb
 skype_download_dir: /tmp/skype
+
+# Zsh
+oh_my_zsh_url_download: https://github.com/robbyrussell/oh-my-zsh
+oh_my_zsh_theme: robbyrussell
+oh_my_zsh_export: "/home/{{ usuario }}/.oh-my-zsh"
+oh_my_zsh_variable: export PATH=~/.local/bin:$PATH
+oh_my_zsh_plugins: git zsh-autosuggestions zsh-syntax-highlighting
+oh_my_zsh_custom_dir_plugins: /home/{{ usuario }}/.oh-my-zsh/custom/plugins/
+oh_my_zsh_custom_plugins:
+  - repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "{{ oh_my_zsh_custom_dir_plugins }}/zsh-syntax-highlighting"
+  - repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "{{ oh_my_zsh_custom_dir_plugins }}/zsh-autosuggestions"
+oh_my_zsh_extra: |-
+  # Config tilix
+  if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+  source /etc/profile.d/vte-2.91.sh
+  fi
+  
+  # Alias
+  alias m="mysql -u root -p"
+  alias atualizar="apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y"
+  
+  export PATH=~/.local/bin:$PATH
+

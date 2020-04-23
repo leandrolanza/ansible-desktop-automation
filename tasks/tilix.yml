@@ -11,3 +11,9 @@
   apt:
     name: tilix
     state: present
+
+- name: Tilix - Create link.
+  file:
+    src: /etc/profile.d/vte-2.91.sh
+    dest: /etc/profile.d/vte.sh
+    state: link
