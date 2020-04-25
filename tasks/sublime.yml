@@ -13,4 +13,4 @@
 - name: Sublime - Install.
   apt:
     name: sublime-text
-    state: present
+    state: latest

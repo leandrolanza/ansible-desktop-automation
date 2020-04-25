@@ -1,16 +1,8 @@
 ---
-- name: Tilix - Install repo.
-  become: yes
-  apt_repository:
-    repo: ppa:webupd8team/terminix
-    filename: tilix
-    state: present
-    update_cache: yes
-
 - name: Tilix - Install.
   apt:
     name: tilix
-    state: present
+    state: latest
 
 - name: Tilix - Create link.
   file:

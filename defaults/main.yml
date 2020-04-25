@@ -56,11 +56,11 @@ skype_download_dir: /tmp/skype
 oh_my_zsh_url_download: https://github.com/robbyrussell/oh-my-zsh
 oh_my_zsh_theme: robbyrussell
 oh_my_zsh_export: "/home/{{ usuario }}/.oh-my-zsh"
-oh_my_zsh_plugins: git zsh-autosuggestions zsh-syntax-highlighting
+oh_my_zsh_plugins: git zsh-autosuggestions #zsh-syntax-highlighting
 oh_my_zsh_custom_dir_plugins: /home/{{ usuario }}/.oh-my-zsh/custom/plugins/
 oh_my_zsh_custom_plugins:
-  - repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-    dest: "{{ oh_my_zsh_custom_dir_plugins }}/zsh-syntax-highlighting"
+  #- repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+  #  dest: "{{ oh_my_zsh_custom_dir_plugins }}/zsh-syntax-highlighting"
   - repo: https://github.com/zsh-users/zsh-autosuggestions.git
     dest: "{{ oh_my_zsh_custom_dir_plugins }}/zsh-autosuggestions"
 oh_my_zsh_extra: |-
