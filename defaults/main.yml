@@ -1,6 +1,6 @@
 ---
 # Global
-usuario: user
+usuario: jao
 
 # Postman
 postman_url_download: https://dl.pstmn.io/download/latest/linux64
@@ -27,24 +27,20 @@ docker_apt_arch: amd64
 docker_apt_repository: "deb [arch={{ docker_apt_arch }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} {{ docker_apt_release_channel }}"
 docker_apt_ignore_key_error: true
 docker_apt_gpg_key: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
-docker_yum_repo_url: https://download.docker.com/linux/{{ (ansible_distribution == "Fedora") | ternary("fedora","centos") }}/docker-{{ docker_edition }}.repo
-docker_yum_repo_enable_edge: 0
-docker_yum_repo_enable_test: 0
-docker_yum_gpg_key: https://download.docker.com/linux/centos/gpg
-docker_users: [user]
+docker_users: ["{{ usuario }}"]
 
 # AWS cli
 aws_cli_download_dir: /tmp/awscli
 aws_cli_url_download: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
-aws_cli_user: user
-aws_cli_home: /home/user
+aws_cli_home: "/home/{{ usuario }}"
 aws_output_format: json
 aws_region: us-east-1
 aws_access_key_id: YOUR_ACCESS_KEY_ID
 aws_secret_access_key: YOUR_SECRET_ACCESS_KEY
 
 # Terraform
-terraform_url_download: https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip
+terraform_version: 0.11.14
+terraform_url_download: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
 terraform_install_dir: /usr/local/bin/
 terraform_download_dir: /tmp/terraform
 

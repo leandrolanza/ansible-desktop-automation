@@ -17,16 +17,8 @@
 
 - name: Virtualbox - Install.
   apt:
-    name: virtualbox-6.1
+    name: "virtualbox-6.1"
     state: present
-
-- name: Virtualbox - Copy extension pack.
-  copy:
-    src: files/Oracle_VM_VirtualBox_Extension_Pack-6.1.4.vbox-extpack
-    dest: /tmp
-    owner: "{{ aws_cli_user }}"
-    group: "{{ aws_cli_user }}"
-    mode: 0600
 
 - name: Virtualbox - Ensure virtualbox users are added to the vbox group.
   user:

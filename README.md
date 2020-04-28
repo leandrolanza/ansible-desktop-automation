@@ -18,17 +18,21 @@ list tools
 - virtualbox
 - skype
 
-### in development
+### Instalação
 
- - link instalação para ubuntu
-https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu
+ - Faça a instalação do git
 
-  - faça o download do projeto com o comando abaixo
+ apt-get install git
 
-  wget -O /etc/ansible/roles/master.zip https://github.com/leandrolanza/ansible-infrastructure-tools-package/archive/master.zip
+  - Faça a instalação da ultima versão do ansible:
 
-   - faça unzip no arquivo
+  https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#
 
-   unzip master.zip
+ - faça o clone do projeto abaixo:
 
-   ansible-playbook --connection=local -i 127.0.0.1, ansible-infrastructure-tools-package/main.yml --ask-sudo-pass
+ git clone https://github.com/leandrolanza/ansible-infrastructure-tools-package.git
+
+ - execute o comando abaixo para realizar a instalação
+
+ ansible-playbook --connection=local -i 127.0.0.1, ansible-infrastructure-tools-package/main.yml --become-user root
+
