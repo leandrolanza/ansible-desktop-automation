@@ -31,4 +31,4 @@ https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.ht
 
    unzip master.zip
 
-   
+   ansible-playbook --connection=local -i 127.0.0.1, ansible-infrastructure-tools-package/main.yml --ask-sudo-pass
