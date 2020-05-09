@@ -1,0 +1,31 @@
+---
+- name: Packer - Create download directory.
+  file:
+    state: directory
+    mode: u=rwx,go=rx
+    dest: "{{ packer_download_dir }}"
+
+- name: Packer - Download.
+  get_url:
+    url: "{{ packer_url_download }}"
+    dest: "{{ packer_download_dir }}/{{ packer_filename }}"
+    mode: u=rw,go=r
+
+- name: Packer - Unzip.
+  become: yes
+  unarchive:
+    src: "{{ packer_download_dir }}/{{ packer_filename }}"
+    remote_src: yes
+    dest: "{{ packer_download_dir }}"
+    owner: root
+    group: root
+
+- name: Packer - Install.
+  become: yes
+  copy:
+    remote_src: yes
+    src: "{{ packer_download_dir }}/packer"
+    dest: "{{ packer_install_dir }}"
+    owner: root
+    group: root
+    mode: u=rwx,go=rx

@@ -1,7 +1,7 @@
 # ansible-infrastructure-tools-package
  tools package for it professionals
 
-list tools
+Lista de ferramentas
 
 - chrome
 - docker
@@ -34,5 +34,5 @@ list tools
 
  - execute o comando abaixo para realizar a instalação
 
- ansible-playbook --connection=local -i 127.0.0.1, ansible-infrastructure-tools-package/main.yml --become-user root
+ ansible-playbook -i 127.0.0.1, ansible-infrastructure-tools-package/main.yml --become-user root
 
