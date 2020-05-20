@@ -34,5 +34,8 @@ Lista de ferramentas
 
  - execute o comando abaixo para realizar a instalação
 
- ansible-playbook -i 127.0.0.1, ansible-infrastructure-tools-package/main.yml --become-user root
+ sudo ansible-playbook -i 127.0.0.1, ansible-infrastructure-tools-package/main.yml --become-user root --extra-vars "usuario=user"
 
+
+--extra-vars "aws_access_key_id=YOUR_ACCESS_KEY"
+--extra-vars "aws_secret_access_key=YOUR_SECRET_KEY"

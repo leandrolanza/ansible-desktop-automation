@@ -1,6 +1,7 @@
 ---
 # Global
-usuario: jao
+usuario: 
+distribution: focal
 
 # Postman
 postman_url_download: https://dl.pstmn.io/download/latest/linux64
@@ -35,8 +36,8 @@ aws_cli_url_download: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
 aws_cli_home: "/home/{{ usuario }}"
 aws_output_format: json
 aws_region: us-east-1
-aws_access_key_id: YOUR_ACCESS_KEY_ID
-aws_secret_access_key: YOUR_SECRET_ACCESS_KEY
+aws_access_key_id:
+aws_secret_access_key:
 
 # Terraform
 terraform_version: 0.11.14
@@ -76,3 +77,6 @@ packer_version: 1.5.6
 packer_download_dir: /tmp/packer
 packer_url_download: https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_linux_amd64.zip
 packer_install_dir: /usr/local/bin/
+
+#virtualbox
+virtualbox_version: 6.1

@@ -1,0 +1,4 @@
+---
+- name: Authy - Install.
+  shell: snap install authy --beta
+ 

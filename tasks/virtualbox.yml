@@ -1,23 +1,15 @@
 ---
-- name: Virtualbox - Configure the Oracle APT key.
-  apt_key:
-    url: "{{ item }}"
-    state: present
-  with_items:
-    - https://www.virtualbox.org/download/oracle_vbox.asc
-    - https://www.virtualbox.org/download/oracle_vbox_2016.asc
-
 - name: Virtualbox - Install repo.
   become: yes
   apt_repository:
-    repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian bionic contrib
+    repo: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ distribution }} contrib
     filename: virtualbox.list
     state: present
     update_cache: yes
 
 - name: Virtualbox - Install.
   apt:
-    name: "virtualbox-6.1"
+    name: "virtualbox-{{ virtualbox_version }}"
     state: present
 
 - name: Virtualbox - Ensure virtualbox users are added to the vbox group.

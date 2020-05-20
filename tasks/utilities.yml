@@ -29,6 +29,7 @@
     - flameshot
     - whois
     - unzip
+    - snapd
 
 - name: Utilities - Install dependencies vscode.
   package:

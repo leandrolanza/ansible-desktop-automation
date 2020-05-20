@@ -11,6 +11,7 @@
 - include: teamviewer.yml
 - include: terraform.yml
 - include: tilix.yml
-#- include: virtualbox.yml
+- include: virtualbox.yml
 - include: zsh.yml
 - include: packer.yml
+- include: authy.yml
