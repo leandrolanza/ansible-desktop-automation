@@ -2,4 +2,4 @@
   connection: local
   become: yes
   roles:
-    - ansible-infrastructure-tools-package
+    - ansible-desktop-automation
