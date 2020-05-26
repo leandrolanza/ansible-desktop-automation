@@ -48,6 +48,7 @@
     dest: "{{ aws_cli_home }}/.aws/config"
     owner: "{{ usuario }}"
     group: "{{ usuario }}"
+    force: no
     mode: u=rw,go=r
 
 - name: AWSCli - Copy AWS CLI credentials.
@@ -57,4 +58,5 @@
     dest: "{{ aws_cli_home }}/.aws/credentials"
     owner: "{{ usuario }}"
     group: "{{ usuario }}"
-    mode: 0600
+    force: no
+    mode: u=rw,go=r

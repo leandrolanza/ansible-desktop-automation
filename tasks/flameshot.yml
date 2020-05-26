@@ -1,0 +1,36 @@
+---
+- name: Flameshot - Install.
+  apt:
+    name: flameshot
+    state: present
+
+- name: Flameshot - Release PrtScr.
+  become_user: "{{ usuario }}"
+  become: yes
+  become_method: su
+  command: gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot '[]'
+
+- name: Flameshot - Set a new custom binding.
+  become_user: "{{ usuario }}"
+  become: yes
+  become_method: su
+  command: gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+
+- name: Flameshot - SetName.
+  become_user: "{{ usuario }}"
+  become: yes
+  become_method: su
+  command: gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'flameshot'
+
+- name: Flameshot - Set command.
+  become_user: "{{ usuario }}"
+  become: yes
+  become_method: su
+  command: gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command '/usr/bin/flameshot gui'
+
+- name: Flameshot - Set Binding.
+  become_user: "{{ usuario }}"
+  become: yes
+  become_method: su
+  command: gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding 'Print'
+ 

@@ -1,8 +1,10 @@
 ---
-- include: utilities.yml
+- include: appcommons.yml
+- include: authy.yml
 - include: awscli.yml
 - include: chrome.yml
 #- include: docker.yml
+- include: flameshot.yml
 - include: postman.yml
 - include: skype.yml
 - include: spotify.yml
@@ -14,4 +16,3 @@
 - include: virtualbox.yml
 - include: zsh.yml
 - include: packer.yml
-- include: authy.yml
