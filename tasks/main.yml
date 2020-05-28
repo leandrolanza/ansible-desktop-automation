@@ -5,14 +5,14 @@
 - include: chrome.yml
 #- include: docker.yml
 - include: flameshot.yml
+- include: packer.yml
 - include: postman.yml
 - include: skype.yml
 - include: spotify.yml
 - include: sublime.yml
-- include: vscode.yml
 - include: teamviewer.yml
 - include: terraform.yml
 - include: tilix.yml
+- include: vscode.yml
 - include: virtualbox.yml
 - include: zsh.yml
-- include: packer.yml

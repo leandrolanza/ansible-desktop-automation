@@ -1,41 +1,36 @@
-# ansible-infrastructure-tools-package
- tools package for it professionals
+# ansible-desktop-automation
 
-Lista de ferramentas
 
+Sempre que preciso formatar meu notebook por alguma razão, sempre esqueço de instalar algumas ferramentas que utilizo no dia a dia, por isso resolvi automatizar esse processo de automação de desktop.
+
+Essa ferramenta faz a instalação de todos os programas listados abaixo:
+
+### Lista de utilitários
+
+Diversos utilitários como exemplo **nmap, git, vim, etc** que estão listados em `appcommons.yml`
+
+### Lista de ferramentas
+
+- authy
+- awscli_v2
 - chrome
 - docker
 - docker-compose
+- flameshot
+- packer
 - postman
+- skype
 - spotify
 - sublime
 - teamviewer
-- vscode
-- unzip
-- tilix
-- awscli_v2
 - terraform
+- tilix
 - virtualbox
-- skype
+- vscode
+
 
 ### Instalação
 
- - Faça a instalação do git
 
- apt-get install git
+wget -qO- https://raw.githubusercontent.com/leandrolanza/ansible-desktop-automation/master/install.sh | bash -
 
-  - Faça a instalação da ultima versão do ansible:
-
-  https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#
-
- - faça o clone do projeto abaixo:
-
- git clone https://github.com/leandrolanza/ansible-infrastructure-tools-package.git
-
- - execute o comando abaixo para realizar a instalação
-
-ansible-playbook -i 127.0.0.1, ansible-infrastructure-tools-package/main.yml --ask-become-pass -K --extra-vars "usuario=$USER"
-
-
---extra-vars "aws_access_key_id=YOUR_ACCESS_KEY"
---extra-vars "aws_secret_access_key=YOUR_SECRET_KEY"

@@ -1,4 +1,10 @@
 ---
+- name: Virtualbox - Install key 2016.
+  shell: "wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -"
+
+- name: Virtualbox - Install key.
+  shell: "wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -"
+
 - name: Virtualbox - Install repo.
   become: yes
   apt_repository:
