@@ -27,8 +27,10 @@ function INSTALL_ANSIBLE() {
 }
 
 function CLONE_REPO() {
-	CREATE_DIR=$(mkdir -p /tmp/ansible/ansible-desktop-automation)
-	REPO_DIR="/tmp/ansible/ansible-desktop-automation"
+	APP_NAME="ansible-desktop-automation"
+	APP_DIR="/tmp/ansible"
+	CREATE_APP_DIR=$(mkdir -p $APP_DIR/$APP_NAME)
+	REPO_DIR="$APP_DIR/$APP_NAME"
 	REPO_URL="https://github.com/leandrolanza/ansible-desktop-automation.git"
 
 	echo "Cloning Repository in $REPO_DIR"
@@ -38,10 +40,9 @@ function CLONE_REPO() {
 
 function EXECUTE_ANSIBLE() {
 	echo "Inicia Playbook..."
-	mv $REPO_DIR/main.yml /tmp/ansible/
-	mv $REPO_DIR/hosts /tmp/ansible/
-	#ansible-playbook -i 127.0.0.1, ansible-infrastructure-tools-package/main.yml --ask-become-pass -K --extra-vars "usuario=$USER"
-	ansible-playbook -i $REPO_DIR/hosts $REPO_DIR/main.yml
+	cp $REPO_DIR/main.yml $APP_DIR
+	cp $REPO_DIR/hosts $APP_DIR
+	ansible-playbook -i $APP_DIR/hosts $APP_DIR/main.yml --extra-vars "usuario=$USER"
 }
 
 function MAIN() {
