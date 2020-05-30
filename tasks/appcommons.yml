@@ -29,6 +29,8 @@
     - whois
     - unzip
     - snapd
+    - make
+    - jq
 
 - name: Utilities - Install dependencies vscode.
   package:
