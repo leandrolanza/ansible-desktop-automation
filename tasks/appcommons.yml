@@ -31,6 +31,7 @@
     - snapd
     - make
     - jq
+    - network-manager-l2tp
 
 - name: Utilities - Install dependencies vscode.
   package:
