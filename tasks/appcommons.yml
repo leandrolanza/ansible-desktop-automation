@@ -50,3 +50,4 @@
     state: present
   with_items:
       - gnupg2
+      - gnupg-agent
