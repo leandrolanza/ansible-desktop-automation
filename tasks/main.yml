@@ -3,7 +3,7 @@
 - include: authy.yml
 - include: awscli.yml
 - include: chrome.yml
-#- include: docker.yml
+- include: docker.yml
 - include: flameshot.yml
 - include: packer.yml
 - include: postman.yml
