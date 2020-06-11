@@ -32,6 +32,8 @@
     - make
     - jq
     - network-manager-l2tp
+    - network-manager-l2tp-gnome
+    - sshpass
 
 - name: Utilities - Install dependencies vscode.
   package:
