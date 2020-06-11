@@ -10,10 +10,8 @@ Obs: Não é necessário instalar o ansible, o script no final da página faz.
 
 Essa receita em ansible foi testado nos SOs listados abaixo:
 
-* Mint 19.3
 * Ubuntu 18.04
 * Ubuntu 20.04
-
 
 ## Lista de utilitários
 
