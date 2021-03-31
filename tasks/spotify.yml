@@ -1,6 +1,6 @@
 ---
 - name: Spotify - Add apt key.
-  shell: curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
+  shell: curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
 
 - name: Spotify - Install repo.
   become: yes
