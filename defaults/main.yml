@@ -38,7 +38,7 @@ aws_access_key_id:
 aws_secret_access_key:
 
 # Terraform
-terraform_version: 0.11.14
+terraform_version: 0.14.9
 terraform_url_download: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
 terraform_install_dir: /usr/local/bin/
 terraform_download_dir: /tmp/terraform
@@ -71,7 +71,7 @@ oh_my_zsh_extra: |-
   export PATH=~/.local/bin:$PATH
 
 # Packer
-packer_version: 1.4.3
+packer_version: 1.7.2
 packer_download_dir: /tmp/packer
 packer_url_download: https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_linux_amd64.zip
 packer_install_dir: /usr/local/bin/
